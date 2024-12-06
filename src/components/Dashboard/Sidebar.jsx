@@ -143,6 +143,11 @@ const Sidebar = () => {
               text="Set Selection to add students"
               icon={<ListIcon />}
             />
+             <SidebarButton
+              to="/dashboard/update-attendance"
+              text="update student attendance"
+              icon={<ListIcon />}
+            />
           </List>
         </Box>
 

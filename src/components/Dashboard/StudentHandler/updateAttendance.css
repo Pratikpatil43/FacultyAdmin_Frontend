@@ -1,0 +1,9 @@
+.status-present {
+    background-color: #d4edda;
+    transition: background-color 0.5s ease;
+}
+
+.status-absent {
+    background-color: #f8d7da;
+    transition: background-color 0.5s ease;
+}

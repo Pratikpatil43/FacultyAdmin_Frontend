@@ -44,7 +44,7 @@ const AddStudentForm = () => {
         const studentData = {
             studentName,
             studentUSN,
-            isLateralEntry,
+            isLateralEntry, // Include the isLateralEntry state
             selectedBranch,
             selectedClassName,
             selectedDate,
@@ -120,7 +120,7 @@ const AddStudentForm = () => {
                     id="lateralEntry"
                     className="form-check-input"
                     checked={isLateralEntry}
-                    onChange={() => setIsLateralEntry(!isLateralEntry)}
+                    onChange={() => setIsLateralEntry(!isLateralEntry)} // Toggle the value
                 />
                 <label htmlFor="lateralEntry" className="form-check-label">Lateral Entry</label>
             </div>

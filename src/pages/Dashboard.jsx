@@ -6,6 +6,7 @@ import MarkAttendance from '../components/Dashboard/StudentHandler/MarkAttendanc
 import AddStudentForm from '../components/Dashboard/StudentHandler/AddStudentForm';
 import FetchStudents from '../components/Dashboard/StudentHandler/FetchStudents';
 import SetSelection from '../components/Dashboard/StudentHandler/SetSelection'
+import UpdateAttendance from '../components/Dashboard/StudentHandler/UpdateAttendance';
 
 
 
@@ -34,6 +35,8 @@ const Dashboard = () => {
                     <Route path="add-student" element={<AddStudentForm />} />
                     <Route path="view-students" element={<FetchStudents />} />
                     <Route path="set-selection" element={<SetSelection />} />
+                    <Route path="update-attendance" element={<UpdateAttendance />} />
+
 
 
                 </Routes>

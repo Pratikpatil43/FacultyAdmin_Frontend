@@ -1,77 +1,70 @@
-// ViewProfile.jsx
-
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+// src/components/ViewProfile.jsx
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const ViewProfile = () => {
   const [profile, setProfile] = useState(null);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/hod/viewprofile", {
+        const token = sessionStorage.getItem('token'); // Or get token from wherever you store it
+        const response = await axios.get('http://localhost:5000/api/faculty/viewProfile', {
           headers: {
-            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-            
+            Authorization: `Bearer ${token}`,
           },
         });
-        setProfile(response.data.profile);
+        setProfile(response.data.user); // Assuming your API response structure
       } catch (err) {
-        setError(err.response ? err.response.data.message : "An error occurred.");
-      } finally {
-        setLoading(false);
+        setError('Error fetching profile data.');
       }
     };
-
     fetchProfile();
   }, []);
 
-  if (loading) return <div className="text-center mt-5">Loading...</div>;
-  if (error) return <div className="alert alert-danger mt-5">{error}</div>;
+  const handleBackClick = () => {
+    navigate('/dashboard'); // Navigate back to dashboard
+  };
 
   return (
     <div className="container mt-5">
       <div className="card">
-        <div className="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-          <h3>Master Admin Profile</h3>
-          <button
-            className="btn btn-light btn-sm"
-            onClick={() => navigate("/dashboard")}
-          >
-            Back to Dashboard
-          </button>
+        <div className="card-header">
+          <h3>Faculty Profile</h3>
         </div>
         <div className="card-body">
-          {profile ? (
+          {error ? (
+            <div className="alert alert-danger">{error}</div>
+          ) : profile ? (
             <>
-              <div className="row mb-3">
-                <div className="col-md-4 font-weight-bold">ID:</div>
-                <div className="col-md-8">{profile.id}</div>
-              </div>
               <div className="row mb-3">
                 <div className="col-md-4 font-weight-bold">Name:</div>
                 <div className="col-md-8">{profile.name}</div>
               </div>
               <div className="row mb-3">
                 <div className="col-md-4 font-weight-bold">Username:</div>
-                <div className="col-md-8">{profile.username}</div>
+                <div className="col-md-8">{profile.facultyUsername}</div>
               </div>
               <div className="row mb-3">
-                <div className="col-md-4 font-weight-bold">Role:</div>
-                <div className="col-md-8">{profile.role}</div>
+                <div className="col-md-4 font-weight-bold">Branch:</div>
+                <div className="col-md-8">{profile.branch}</div>
               </div>
               <div className="row mb-3">
-                <div className="col-md-4 font-weight-bold">Master Admin:</div>
-                <div className="col-md-8">{profile.role === 'hod' ? "Yes" : "No"}</div>
+                <div className="col-md-4 font-weight-bold">Subject:</div>
+                <div className="col-md-8">{profile.subject}</div>
               </div>
             </>
           ) : (
-            <div className="text-danger">Profile data not available.</div>
+            <div className="text-center">Loading...</div>
           )}
+        </div>
+        <div className="card-footer text-center">
+          <button className="btn btn-primary" onClick={handleBackClick}>
+            Back to Dashboard
+          </button>
         </div>
       </div>
     </div>
