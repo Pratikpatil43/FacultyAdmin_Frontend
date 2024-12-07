@@ -12,7 +12,7 @@ const ViewProfile = () => {
     const fetchProfile = async () => {
       try {
         const token = sessionStorage.getItem('token'); // Or get token from wherever you store it
-        const response = await axios.get('/api/faculty/viewProfile', {
+        const response = await axios.get('https://attendancetracker-backend1.onrender.com/api/faculty/viewProfile', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

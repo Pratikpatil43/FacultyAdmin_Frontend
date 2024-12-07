@@ -26,7 +26,7 @@ const UpdateAttendance = () => {
 
     const fetchSelections = async () => {
         try {
-            const response = await axios.get('/api/faculty/getfacultySelection', {
+            const response = await axios.get('https://attendancetracker-backend1.onrender.com/api/faculty/getfacultySelection', {
                 headers: { 'Authorization': `Bearer ${token}` },
             });
             setBranches(response.data.branches);
@@ -46,7 +46,7 @@ const UpdateAttendance = () => {
         setLoading(true);
         try {
             const response = await axios.get(
-                `/api/faculty/attendance/getAttendance?branch=${branch}&className=${className}&subject=${subject}&attendanceDate=${attendanceDate}`,
+                `https://attendancetracker-backend1.onrender.com/api/faculty/attendance/getAttendance?branch=${branch}&className=${className}&subject=${subject}&attendanceDate=${attendanceDate}`,
                 { headers: { 'Authorization': `Bearer ${token}` } }
             );
 
@@ -85,7 +85,7 @@ const UpdateAttendance = () => {
 
         try {
             const response = await axios.put(
-                `/api/faculty/attendance/updateAttendance/${recordId}`,
+                `https://attendancetracker-backend1.onrender.com/api/faculty/attendance/updateAttendance/${recordId}`,
                 { status: newStatus },
                 { headers: { 'Authorization': `Bearer ${token}` } }
             );

@@ -93,7 +93,7 @@ const MarkAttendance = () => {
 
         try {
             const response = await axios.post(
-                '/api/faculty/attendance/markAttendance',
+                'https://attendancetracker-backend1.onrender.com/api/faculty/attendance/markAttendance',
                 {
                     subject,
                     branch,
