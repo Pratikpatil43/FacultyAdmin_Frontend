@@ -25,7 +25,7 @@ const FetchStudents = () => {
     // Fetch selection data (branches, classes, subjects)
     const fetchSelections = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/faculty/getfacultySelection', {
+            const response = await axios.get('https://attendancetracker-backend1.onrender.com/api/faculty/getfacultySelection', {
                 headers: { 'Authorization': `Bearer ${token}` },
             });
             setBranches(response.data.branches);
@@ -46,7 +46,7 @@ const FetchStudents = () => {
         setLoading(true);
         try {
             const response = await axios.post(
-                'http://localhost:5000/api/faculty/getStudents',
+                'https://attendancetracker-backend1.onrender.com/api/faculty/getStudents',
                 { branch, className, subject },
                 { headers: { 'Authorization': `Bearer ${token}` } }
             );
@@ -79,7 +79,7 @@ const FetchStudents = () => {
 
         try {
             await axios.put(
-                'http://localhost:5000/api/faculty/updateStudent',
+                'https://attendancetracker-backend1.onrender.com/api/faculty/updateStudent',
                 { studentUSN: selectedStudent.studentUSN, studentName: updateName },
                 { headers: { 'Authorization': `Bearer ${token}` } }
             );
@@ -97,7 +97,7 @@ const FetchStudents = () => {
         if (window.confirm('Are you sure you want to delete this student?')) {
             try {
                 await axios.delete(
-                    'http://localhost:5000/api/faculty/deleteStudent',
+                    'https://attendancetracker-backend1.onrender.com/api/faculty/deleteStudent',
                     {
                         data: { studentUSN },
                         headers: { 'Authorization': `Bearer ${token}` },

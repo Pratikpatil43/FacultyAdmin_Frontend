@@ -6,7 +6,7 @@ export default {
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'https://attendancetracker-backend1.onrender.com',
         changeOrigin: true,
         secure: false,
       },

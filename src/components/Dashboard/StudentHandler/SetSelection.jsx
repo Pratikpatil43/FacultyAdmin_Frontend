@@ -24,7 +24,7 @@ const SetSelection = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:5000/api/faculty/setSelection', data, {
+            const response = await axios.post('https://attendancetracker-backend1.onrender.com/api/faculty/setSelection', data, {
                 headers: {
                     Authorization: `Bearer ${token}` // Attach the token to the request headers
                 }

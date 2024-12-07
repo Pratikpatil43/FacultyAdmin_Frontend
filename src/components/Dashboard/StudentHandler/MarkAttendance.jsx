@@ -26,7 +26,7 @@ const MarkAttendance = () => {
         }
 
         try {
-            const response = await axios.get('http://localhost:5000/api/faculty/getfacultySelection', {
+            const response = await axios.get('https://attendancetracker-backend1.onrender.com/api/faculty/getfacultySelection', {
                 headers: { 'Authorization': `Bearer ${token}` },
             });
             setBranches(response.data.branches);
@@ -47,7 +47,7 @@ const MarkAttendance = () => {
         setLoading(true);
         try {
             const response = await axios.post(
-                'http://localhost:5000/api/faculty/getStudents',
+                'https://attendancetracker-backend1.onrender.com/api/faculty/getStudents',
                 { branch, className, subject },
                 { headers: { 'Authorization': `Bearer ${token}` } }
             );
@@ -93,7 +93,7 @@ const MarkAttendance = () => {
 
         try {
             const response = await axios.post(
-                'http://localhost:5000/api/faculty/attendance/markAttendance',
+                'https://attendancetracker-backend1.onrender.com/api/faculty/attendance/markAttendance',
                 {
                     subject,
                     branch,

@@ -20,7 +20,7 @@ const AuthForm = () => {
         e.preventDefault();
         
         try {
-            const response = await axios.post('http://localhost:5000/api/faculty/login', {
+            const response = await axios.post('https://attendancetracker-backend1.onrender.com/api/faculty/login', {
                 facultyUsername,
                 password,
             });
