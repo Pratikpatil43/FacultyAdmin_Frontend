@@ -20,7 +20,7 @@ const AddStudentForm = () => {
     useEffect(() => {
         const token = sessionStorage.getItem('token');
 
-        axios.get('https://attendancetracker-backend1.onrender.com/api/faculty/getSelection', {
+        axios.get('/api/faculty/getSelection', {
             headers: {
                 'Authorization': `Bearer ${token}`,
             },
@@ -52,7 +52,7 @@ const AddStudentForm = () => {
 
         const token = sessionStorage.getItem('token');
 
-        axios.post('https://attendancetracker-backend1.onrender.com/api/faculty/addStudent', studentData, {
+        axios.post('/api/faculty/addStudent', studentData, {
             headers: {
                 'Authorization': `Bearer ${token}`,
             },
